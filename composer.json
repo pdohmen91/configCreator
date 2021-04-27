@@ -1,0 +1,16 @@
+{
+    "name": "peterdohmen/config-creator",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Peter Dohmen",
+            "email": "pdohmen91@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "ConfigGenerator\\": "src/"
+        }
+    }
+}
