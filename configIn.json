@@ -1,0 +1,11 @@
+{
+    "system": {
+        "database": { 
+            "name": {
+                "type": "string",
+                "breaking": true,
+                "description": "This defines the Database name"
+            }
+        }
+    }
+}
