@@ -3,6 +3,7 @@
 namespace ConfigGenerator;
 
 use ConfigGenerator\ConfigRenderer;
+use ConfigGenerator\ErrorRenderer;
 
 /**
  * ConfigGenerator
@@ -17,6 +18,9 @@ class ConfigGenerator {
     public function run(): void {
         //Read Config Input File
         $lConfigInput = $this->readFile('configIn.json');
+        if(empty($lConfigInput)) {
+            $lConfigRenderer = new ErrorRenderer("configIn.json is empty, was not found or could not be opened");
+        }
         $lConfigInputArray = $this->parseConfigurationInput($lConfigInput);
         
         //Render Config Form
@@ -31,7 +35,13 @@ class ConfigGenerator {
      * @return array
      */
     private function parseConfigurationInput(string $aInput): array {
-        return json_decode($aInput, true);
+        $lJson =  json_decode($aInput, true);
+
+        if ($lJson === null && json_last_error() !== JSON_ERROR_NONE) {
+            $lConfigRenderer = new ErrorRenderer("json structure not valid");
+        }
+        
+        return $lJson;
     }
     
     /**
