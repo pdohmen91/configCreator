@@ -1,11 +1,16 @@
 {
-    "system": {
-        "database": { 
-            "name": {
-                "type": "string",
-                "breaking": true,
-                "description": "This defines the Database name"
-            }
-        }
+    "db.name": {
+        "type": "string",
+        "name": "Database Name",
+        "breaking": true,
+        "description": "This defines the Database name."
+    },
+    "db.port": {
+        "type": "number",
+        "name": "Database Port",
+        "breaking": true,
+        "default": "3306",
+        "max": "65535",
+        "description": "This defines the Database port."
     }
 }
