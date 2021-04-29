@@ -22,7 +22,8 @@ class ConfigGenerator {
             $lConfigRenderer = new ErrorRenderer("configIn.json is empty, was not found or could not be opened");
         }
         $lConfigInputArray = $this->parseConfigurationInput($lConfigInput);
-        
+        asort($lConfigInputArray);
+
         //Render Config Form
         $lConfigRenderer = new ConfigRenderer($lConfigInputArray);
         $lConfigRenderer->render();
@@ -55,6 +56,6 @@ class ConfigGenerator {
             return '';
         }
 
-        return file_get_contents($aFilePath);
+        return mb_convert_encoding(file_get_contents($aFilePath), 'HTML-ENTITIES', "UTF-8");
     }
 }
