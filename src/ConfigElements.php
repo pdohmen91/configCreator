@@ -213,7 +213,7 @@ class ConfigElements
     public static function getMoreLink(string $aLink):string
     {
         if(!empty($aLink)) {
-            return 'More Details: <a href="'.$aLink.'" target="_blank">External Link</a>';
+            return 'More Details: <a href="'.$aLink.'" target="_blank" rel="noreferrer">External Link</a>';
         }
 
         return '';
