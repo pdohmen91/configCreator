@@ -22,7 +22,7 @@ class ConfigRenderer {
     }
     
     /**
-     * setConfigIn
+     * SetConfigIn
      *
      * @param  mixed $aIn
      * @return bool
@@ -35,7 +35,7 @@ class ConfigRenderer {
     }
     
     /**
-     * render
+     * Render
      *
      * @return void
      */
@@ -76,16 +76,36 @@ class ConfigRenderer {
 
         return $lRet;
     }
-
+    
+    /**
+     * RenderError
+     *
+     * @param  mixed $aMessage
+     * @return string
+     */
     private function renderError(string $aMessage):string 
     {
         return ConfigTemplate::error($aMessage);
     }
-
+    
+    /**
+     * RenderSection
+     *
+     * @param  mixed $aCode
+     * @param  mixed $aLevel
+     * @return string
+     */
     private function renderSection(string $aCode, int $aLevel): string {
         return ConfigTemplate::sectionHeadline($aCode, $aLevel);
     }
-
+    
+    /**
+     * RenderConfigItem
+     *
+     * @param  mixed $aCode
+     * @param  mixed $aConfig
+     * @return string
+     */
     private function renderConfigItem(string $aCode, array $aConfig): string 
     {
         $lType = isset($aConfig['type']) ? $aConfig['type'] : '';
@@ -99,7 +119,14 @@ class ConfigRenderer {
             return $this->renderConfigTypeString($aCode, $aConfig);
         }
     }
-
+    
+    /**
+     * RenderConfigTypeNumber
+     *
+     * @param  mixed $aCode
+     * @param  mixed $aConfig
+     * @return string
+     */
     private function renderConfigTypeNumber(string $aCode,array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';
@@ -113,7 +140,14 @@ class ConfigRenderer {
         
         return ConfigTemplate::NumberField($aCode, $lName, $lDefault, $lDescription, $lMin, $lMax, $lStep, $lBreaking, $lLink);
     }
-
+    
+    /**
+     * RenderConfigTypeString
+     *
+     * @param  mixed $aCode
+     * @param  mixed $aConfig
+     * @return string
+     */
     private function renderConfigTypeString(string $aCode,array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';
@@ -128,7 +162,14 @@ class ConfigRenderer {
 
         return ConfigTemplate::TextField($aCode, $lName, $lDefault, $lDescription, $lBreaking, $lLink);
     }
-
+    
+    /**
+     * RenderConfigTypeSelection
+     *
+     * @param  mixed $aCode
+     * @param  mixed $aConfig
+     * @return string
+     */
     private function renderConfigTypeSelection(string $aCode,array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';

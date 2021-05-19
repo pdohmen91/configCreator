@@ -21,7 +21,7 @@ class ErrorRenderer {
     }
     
     /**
-     * setConfigIn
+     * SetConfigIn
      *
      * @param  mixed $aIn
      * @return bool
@@ -34,7 +34,7 @@ class ErrorRenderer {
     }
     
     /**
-     * render
+     * Render
      *
      * @return void
      */

@@ -11,7 +11,7 @@ use ConfigGenerator\ErrorRenderer;
 class ConfigGenerator {
 
     /**
-     * run
+     * Run
      *
      * @return void
      */
@@ -30,7 +30,7 @@ class ConfigGenerator {
     }
     
     /**
-     * parseConfigurationInput
+     * ParseConfigurationInput
      *
      * @param  mixed $aInput
      * @return array
@@ -46,7 +46,7 @@ class ConfigGenerator {
     }
     
     /**
-     * readFile
+     * ReadFile
      *
      * @param  mixed $aFilePath
      * @return string
