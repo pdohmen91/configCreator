@@ -48,14 +48,14 @@ class ConfigRenderer
         
         $lRet = ConfigTemplate::documentHeader();
         $lRet .= ConfigTemplate::formHeader();
-        $lRet .= $this->renderForm($this->mConfigIn);
+        $lRet .= $this->_renderForm($this->mConfigIn);
         $lRet .= ConfigTemplate::formFooter();
         $lRet .= ConfigTemplate::documentFooter();
         
         return $lRet;
     }
 
-    private function renderForm(array $aConfig, int $aLevel = 2):string
+    private function _renderForm(array $aConfig, int $aLevel = 2):string
     {
         $lRet = '';
 
@@ -63,13 +63,13 @@ class ConfigRenderer
 
         foreach ($aConfig as $lCode => $lConfig) {
             if (isset($lConfig['name'])) {
-                $lRet .= $this->renderConfigItem($lCode, $lConfig);
+                $lRet .= $this->_renderConfigItem($lCode, $lConfig);
             } else {
-                $lRet .= $this->renderSection($lCode, $aLevel);
+                $lRet .= $this->_renderSection($lCode, $aLevel);
                 if ($aLevel < 6) {
-                    $lRet .= $this->renderForm($lConfig, $aLevel);
+                    $lRet .= $this->_renderForm($lConfig, $aLevel);
                 } else {
-                    $lRet .= $this->renderError('Nesting Limit reached');
+                    $lRet .= $this->_renderError('Nesting Limit reached');
                 }
             }
         }
@@ -83,7 +83,7 @@ class ConfigRenderer
      * @param  mixed $aMessage
      * @return string
      */
-    private function renderError(string $aMessage):string
+    private function _renderError(string $aMessage):string
     {
         return ConfigTemplate::error($aMessage);
     }
@@ -95,7 +95,7 @@ class ConfigRenderer
      * @param  mixed $aLevel
      * @return string
      */
-    private function renderSection(string $aCode, int $aLevel): string
+    private function _renderSection(string $aCode, int $aLevel): string
     {
         return ConfigTemplate::sectionHeadline($aCode, $aLevel);
     }
@@ -107,17 +107,17 @@ class ConfigRenderer
      * @param  mixed $aConfig
      * @return string
      */
-    private function renderConfigItem(string $aCode, array $aConfig): string
+    private function _renderConfigItem(string $aCode, array $aConfig): string
     {
         $lType = isset($aConfig['type']) ? $aConfig['type'] : '';
         
         switch ($lType) {
         case 'number':
-            return $this->renderConfigTypeNumber($aCode, $aConfig);
+            return $this->_renderConfigTypeNumber($aCode, $aConfig);
         case 'selection':
-            return $this->renderConfigTypeSelection($aCode, $aConfig);
+            return $this->_renderConfigTypeSelection($aCode, $aConfig);
         default:
-            return $this->renderConfigTypeString($aCode, $aConfig);
+            return $this->_renderConfigTypeString($aCode, $aConfig);
         }
     }
     
@@ -128,7 +128,7 @@ class ConfigRenderer
      * @param  mixed $aConfig
      * @return string
      */
-    private function renderConfigTypeNumber(string $aCode, array $aConfig): string
+    private function _renderConfigTypeNumber(string $aCode, array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';
         $lDefault = isset($aConfig['default']) ? $aConfig['default'] : '';
@@ -149,7 +149,7 @@ class ConfigRenderer
      * @param  mixed $aConfig
      * @return string
      */
-    private function renderConfigTypeString(string $aCode, array $aConfig): string
+    private function _renderConfigTypeString(string $aCode, array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';
         $lDefault = isset($aConfig['default']) ? $aConfig['default'] : '';
@@ -171,7 +171,7 @@ class ConfigRenderer
      * @param  mixed $aConfig
      * @return string
      */
-    private function renderConfigTypeSelection(string $aCode, array $aConfig): string
+    private function _renderConfigTypeSelection(string $aCode, array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';
         $lDefault = isset($aConfig['default']) ? $aConfig['default'] : '';

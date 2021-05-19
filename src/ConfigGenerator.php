@@ -19,7 +19,7 @@ class ConfigGenerator
     public function run(): string
     {
         //Read Config Input File
-        $lConfigInput = $this->readFile('configIn.json');
+        $lConfigInput = $this->_readFile('configIn.json');
         if (empty($lConfigInput)) {
             $lConfigRenderer = new ErrorRenderer("configIn.json is empty, was not found or could not be opened");
         }
@@ -58,7 +58,7 @@ class ConfigGenerator
      * @param  mixed $aFilePath
      * @return string
      */
-    private function readFile(string $aFilePath): string
+    private function _readFile(string $aFilePath): string
     {
         if (!is_file($aFilePath)) {
             return '';
