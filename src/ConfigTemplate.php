@@ -47,15 +47,33 @@ class ConfigTemplate
     public static function DocumentFooter():string
     {
         $lRet = <<<EOD
+            <a id="back-to-top" href="#" class="btn btn-dark btn-lg back-to-top" role="button" style="display:none;">Back to Top</a>
+
             <!-- Bootstrap core JS-->
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
             <!-- Init JS -->
             <script>
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             });
-            </script>
+
+            $(document).ready(function(){
+              $(window).scroll(function () {
+                      if ($(this).scrollTop() > 50) {
+                          $('#back-to-top').fadeIn();
+                      } else {
+                          $('#back-to-top').fadeOut();
+                      }
+                  });
+                  $('#back-to-top').click(function () {
+                      $('body,html').animate({
+                          scrollTop: 0
+                      }, 400);
+                      return false;
+                  });
+          });
+          </script>
         </body>
         </html>
         EOD;
