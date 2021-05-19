@@ -2,6 +2,11 @@
 
 namespace ConfigGenerator;
 
+/**
+ * ConfigTemplate
+ * @author Peter Dohmen peterdohmen.de
+ * @package ConfigCreator
+ */
 class ConfigTemplate
 {
     /**

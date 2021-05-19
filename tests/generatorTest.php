@@ -3,6 +3,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * generatorTest
+ * @author Peter Dohmen peterdohmen.de
+ * @package ConfigCreator
  */
 final class generatorTest extends TestCase
 {

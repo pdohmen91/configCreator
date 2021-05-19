@@ -7,6 +7,8 @@ use ConfigGenerator\ErrorRenderer;
 
 /**
  * ConfigGenerator
+ * @author Peter Dohmen peterdohmen.de
+ * @package ConfigCreator
  */
 class ConfigGenerator
 {
