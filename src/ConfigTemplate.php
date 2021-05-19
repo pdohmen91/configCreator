@@ -206,7 +206,17 @@ class ConfigTemplate
      * @param  mixed $aBreaking
      * @return string
      */
-    public static function numberField(string $aCode, string $aName, string $aDefault, string $aDescription, string $aMin, string $aMax, string $aStep, $aBreaking, string $aLink):string
+    public static function numberField(
+        string $aCode,
+        string $aName,
+        string $aDefault,
+        string $aDescription,
+        string $aMin,
+        string $aMax,
+        string $aStep,
+        $aBreaking,
+        string $aLink
+    ):string
     {
         $lMore = self::getMoreLink($aLink);
         
@@ -239,7 +249,7 @@ class ConfigTemplate
 
     public static function getMoreLink(string $aLink):string
     {
-        if(!empty($aLink)) {
+        if (!empty($aLink)) {
             return 'More Details: <a href="'.$aLink.'" target="_blank" rel="noreferrer">External Link</a>';
         }
 

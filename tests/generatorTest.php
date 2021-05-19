@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
  * generatorTest
  */
 final class generatorTest extends TestCase
-{    
+{
     /**
      * TestCanRun
      *
@@ -17,7 +17,7 @@ final class generatorTest extends TestCase
         $this->assertIsString($lMain->run());
     }
 
-    public function testJsonParser(): void 
+    public function testJsonParser(): void
     {
         $lValidJson = <<<EOD
         {
@@ -48,6 +48,5 @@ final class generatorTest extends TestCase
         $lMain = new ConfigGenerator\ConfigGenerator();
         $this->assertIsArray($lMain->parseConfigurationInput($lValidJson));
         $this->assertEmpty($lMain->parseConfigurationInput($lInValidJson));
-
     }
 }

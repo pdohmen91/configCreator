@@ -3,11 +3,12 @@
 namespace ConfigGenerator;
 
 use ConfigGenerator\ConfigElements;
+
 /**
  * ConfigRenderer
  */
-class ConfigRenderer {
-
+class ConfigRenderer
+{
     private $mConfigIn;
     
     /**
@@ -16,7 +17,7 @@ class ConfigRenderer {
      * @param  mixed $aConfig
      * @return void
      */
-    public function __construct(array $aConfig) 
+    public function __construct(array $aConfig)
     {
         $this->setConfigIn($aConfig);
     }
@@ -27,7 +28,7 @@ class ConfigRenderer {
      * @param  mixed $aIn
      * @return bool
      */
-    public function setConfigIn(array $aIn): bool 
+    public function setConfigIn(array $aIn): bool
     {
         $this->mConfigIn = $aIn;
 
@@ -39,9 +40,9 @@ class ConfigRenderer {
      *
      * @return void
      */
-    public function render() 
+    public function render()
     {
-        if(empty($this->mConfigIn)) {
+        if (empty($this->mConfigIn)) {
             return '';
         }
         
@@ -51,24 +52,23 @@ class ConfigRenderer {
         $lRet .= ConfigTemplate::formFooter();
         $lRet .= ConfigTemplate::documentFooter();
         
-        return $lRet;        
+        return $lRet;
     }
 
-    private function renderForm(array $aConfig, int $aLevel = 2):string {
+    private function renderForm(array $aConfig, int $aLevel = 2):string
+    {
         $lRet = '';
 
         $aLevel++;
 
-        foreach($aConfig as $lCode => $lConfig) {
-            if(isset($lConfig['name'])) {
+        foreach ($aConfig as $lCode => $lConfig) {
+            if (isset($lConfig['name'])) {
                 $lRet .= $this->renderConfigItem($lCode, $lConfig);
-            }
-            else {
+            } else {
                 $lRet .= $this->renderSection($lCode, $aLevel);
-                if($aLevel < 6) {
+                if ($aLevel < 6) {
                     $lRet .= $this->renderForm($lConfig, $aLevel);
-                }
-                else {
+                } else {
                     $lRet .= $this->renderError('Nesting Limit reached');
                 }
             }
@@ -83,7 +83,7 @@ class ConfigRenderer {
      * @param  mixed $aMessage
      * @return string
      */
-    private function renderError(string $aMessage):string 
+    private function renderError(string $aMessage):string
     {
         return ConfigTemplate::error($aMessage);
     }
@@ -95,7 +95,8 @@ class ConfigRenderer {
      * @param  mixed $aLevel
      * @return string
      */
-    private function renderSection(string $aCode, int $aLevel): string {
+    private function renderSection(string $aCode, int $aLevel): string
+    {
         return ConfigTemplate::sectionHeadline($aCode, $aLevel);
     }
     
@@ -106,16 +107,16 @@ class ConfigRenderer {
      * @param  mixed $aConfig
      * @return string
      */
-    private function renderConfigItem(string $aCode, array $aConfig): string 
+    private function renderConfigItem(string $aCode, array $aConfig): string
     {
         $lType = isset($aConfig['type']) ? $aConfig['type'] : '';
         
-        switch($lType) {
+        switch ($lType) {
         case 'number':
             return $this->renderConfigTypeNumber($aCode, $aConfig);
         case 'selection':
             return $this->renderConfigTypeSelection($aCode, $aConfig);
-        default: 
+        default:
             return $this->renderConfigTypeString($aCode, $aConfig);
         }
     }
@@ -127,7 +128,7 @@ class ConfigRenderer {
      * @param  mixed $aConfig
      * @return string
      */
-    private function renderConfigTypeNumber(string $aCode,array $aConfig): string
+    private function renderConfigTypeNumber(string $aCode, array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';
         $lDefault = isset($aConfig['default']) ? $aConfig['default'] : '';
@@ -148,7 +149,7 @@ class ConfigRenderer {
      * @param  mixed $aConfig
      * @return string
      */
-    private function renderConfigTypeString(string $aCode,array $aConfig): string
+    private function renderConfigTypeString(string $aCode, array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';
         $lDefault = isset($aConfig['default']) ? $aConfig['default'] : '';
@@ -156,7 +157,7 @@ class ConfigRenderer {
         $lDescription = isset($aConfig['description']) ? $aConfig['description'] : '';
         $lLink = isset($aConfig['link']) ? $aConfig['link'] : '';
 
-        if(is_array($lDefault)) {
+        if (is_array($lDefault)) {
             $lDefault = htmlspecialchars(html_entity_decode(json_encode($lDefault)));
         }
 
@@ -170,7 +171,7 @@ class ConfigRenderer {
      * @param  mixed $aConfig
      * @return string
      */
-    private function renderConfigTypeSelection(string $aCode,array $aConfig): string
+    private function renderConfigTypeSelection(string $aCode, array $aConfig): string
     {
         $lName = isset($aConfig['name']) ? $aConfig['name'] : '';
         $lDefault = isset($aConfig['default']) ? $aConfig['default'] : '';

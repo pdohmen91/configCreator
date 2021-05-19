@@ -8,23 +8,25 @@ use ConfigGenerator\ErrorRenderer;
 /**
  * ConfigGenerator
  */
-class ConfigGenerator {
+class ConfigGenerator
+{
 
     /**
      * Run
      *
      * @return void
      */
-    public function run(): string {
+    public function run(): string
+    {
         //Read Config Input File
         $lConfigInput = $this->readFile('configIn.json');
-        if(empty($lConfigInput)) {
+        if (empty($lConfigInput)) {
             $lConfigRenderer = new ErrorRenderer("configIn.json is empty, was not found or could not be opened");
         }
         $lConfigInputArray = $this->parseConfigurationInput($lConfigInput);
         asort($lConfigInputArray);
 
-        if(empty($lConfigInputArray)) {
+        if (empty($lConfigInputArray)) {
             $lConfigRenderer = new ErrorRenderer("json structure not valid");
         }
 
@@ -39,7 +41,8 @@ class ConfigGenerator {
      * @param  mixed $aInput
      * @return array
      */
-    public function parseConfigurationInput(string $aInput): array {
+    public function parseConfigurationInput(string $aInput): array
+    {
         $lArray = json_decode($aInput, true);
 
         if ($lArray === null && json_last_error() !== JSON_ERROR_NONE) {
@@ -55,8 +58,9 @@ class ConfigGenerator {
      * @param  mixed $aFilePath
      * @return string
      */
-    private function readFile(string $aFilePath): string {
-        if(!is_file($aFilePath)) {
+    private function readFile(string $aFilePath): string
+    {
+        if (!is_file($aFilePath)) {
             return '';
         }
 
