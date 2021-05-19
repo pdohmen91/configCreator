@@ -16,4 +16,38 @@ final class generatorTest extends TestCase
         $lMain = new ConfigGenerator\ConfigGenerator();
         $this->assertIsString($lMain->run());
     }
+
+    public function testJsonParser(): void 
+    {
+        $lValidJson = <<<EOD
+        {
+            "server": {
+                "database": {
+                    "db.host": {
+                        "name": "Database Host",
+                        "breaking": true
+                    }
+                }
+            }
+        }
+        EOD;
+
+        $lInValidJson = <<<EOD
+        {
+            "server": {
+                "database": {
+                    "db.host": {
+                        "name": "Database Host"
+                        "breaking": true
+                    }
+                }
+            }
+        }
+        EOD;
+
+        $lMain = new ConfigGenerator\ConfigGenerator();
+        $this->assertIsArray($lMain->parseConfigurationInput($lValidJson));
+        $this->assertEmpty($lMain->parseConfigurationInput($lInValidJson));
+
+    }
 }

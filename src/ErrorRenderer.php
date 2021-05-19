@@ -17,7 +17,6 @@ class ErrorRenderer {
     {
         $this->setMessage($aMessage);
         $this->render();
-        exit;
     }
     
     /**

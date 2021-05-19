@@ -24,6 +24,10 @@ class ConfigGenerator {
         $lConfigInputArray = $this->parseConfigurationInput($lConfigInput);
         asort($lConfigInputArray);
 
+        if(empty($lConfigInputArray)) {
+            $lConfigRenderer = new ErrorRenderer("json structure not valid");
+        }
+
         //Render Config Form
         $lConfigRenderer = new ConfigRenderer($lConfigInputArray);
         return $lConfigRenderer->render();
@@ -35,14 +39,14 @@ class ConfigGenerator {
      * @param  mixed $aInput
      * @return array
      */
-    private function parseConfigurationInput(string $aInput): array {
-        $lJson =  json_decode($aInput, true);
+    public function parseConfigurationInput(string $aInput): array {
+        $lArray = json_decode($aInput, true);
 
-        if ($lJson === null && json_last_error() !== JSON_ERROR_NONE) {
-            $lConfigRenderer = new ErrorRenderer("json structure not valid");
+        if ($lArray === null && json_last_error() !== JSON_ERROR_NONE) {
+            return array();
         }
         
-        return $lJson;
+        return $lArray;
     }
     
     /**
