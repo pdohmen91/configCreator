@@ -2,6 +2,7 @@
     "name": "peterdohmen/config-creator",
     "type": "project",
     "license": "MIT",
+    "description": "Create config files easily",
     "authors": [
         {
             "name": "Peter Dohmen",
