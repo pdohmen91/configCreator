@@ -50,7 +50,8 @@ class ConfigRenderer {
         $lRet .= $this->renderForm($this->mConfigIn);
         $lRet .= ConfigTemplate::FormFooter();
         $lRet .= ConfigTemplate::DocumentFooter();
-        echo $lRet;        
+        
+        return $lRet;        
     }
 
     private function renderForm(array $aConfig, int $aLevel = 2):string {

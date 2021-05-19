@@ -15,7 +15,7 @@ class ConfigGenerator {
      *
      * @return void
      */
-    public function run(): void {
+    public function run(): string {
         //Read Config Input File
         $lConfigInput = $this->readFile('configIn.json');
         if(empty($lConfigInput)) {
@@ -26,7 +26,7 @@ class ConfigGenerator {
 
         //Render Config Form
         $lConfigRenderer = new ConfigRenderer($lConfigInputArray);
-        $lConfigRenderer->render();
+        return $lConfigRenderer->render();
     }
     
     /**
