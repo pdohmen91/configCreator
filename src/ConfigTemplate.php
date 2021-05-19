@@ -153,7 +153,7 @@ class ConfigTemplate
         </div>
         EOD;
 
-        return sprintf($lRet, self::BreakingInfo($aBreaking));
+        return sprintf($lRet, self::breakingInfo($aBreaking));
     }
     
     /**
@@ -190,7 +190,7 @@ class ConfigTemplate
         $lRet .= '<small id="'.$aCode.'.Help" class="form-text text-muted">'.$aDescription.' '.$lMore.'</small>';
         $lRet .= '</div>';
 
-        return sprintf($lRet, self::BreakingInfo($aBreaking));
+        return sprintf($lRet, self::breakingInfo($aBreaking));
     }
     
     /**
@@ -219,7 +219,7 @@ class ConfigTemplate
         EOD;
         
         
-        return sprintf($lRet, self::BreakingInfo($aBreaking));
+        return sprintf($lRet, self::breakingInfo($aBreaking));
     }
     
     /**
@@ -228,7 +228,7 @@ class ConfigTemplate
      * @param  mixed $aBreaking
      * @return string
      */
-    public static function BreakingInfo(bool $aBreaking):string
+    public static function breakingInfo(bool $aBreaking):string
     {
         if ($aBreaking) {
             return '<i class="bi bi-exclamation-triangle" data-toggle="tooltip" data-placement="top" title="Changes in this config could make your system unavailable."></i>';
