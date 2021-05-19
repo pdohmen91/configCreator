@@ -5,8 +5,9 @@ namespace ConfigGenerator;
 use ConfigGenerator\ConfigElements;
 /**
  * ConfigRenderer
- * @author Peter Dohmen peterdohmen.de
+ * 
  * @package ConfigCreator
+ * @author Peter Dohmen peterdohmen.de
  */
 class ErrorRenderer {
     /**

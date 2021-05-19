@@ -3,8 +3,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * generatorTest
- * @author Peter Dohmen peterdohmen.de
+ * 
  * @package ConfigCreator
+ * @author Peter Dohmen peterdohmen.de
  */
 final class generatorTest extends TestCase
 {
@@ -18,7 +19,12 @@ final class generatorTest extends TestCase
         $lMain = new ConfigGenerator\ConfigGenerator();
         $this->assertIsString($lMain->run());
     }
-
+    
+    /**
+     * testJsonParser
+     *
+     * @return void
+     */
     public function testJsonParser(): void
     {
         $lValidJson = <<<EOD
