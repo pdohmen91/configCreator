@@ -57,7 +57,7 @@ class ConfigRenderer {
     private function renderForm(array $aConfig, int $aLevel = 2):string {
         $lRet = '';
 
-        $lLevel = $aLevel++;
+        $aLevel++;
 
         foreach($aConfig as $lCode => $lConfig) {
             if(isset($lConfig['name'])) {
