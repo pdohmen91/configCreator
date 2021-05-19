@@ -9,7 +9,7 @@ class ConfigTemplate
      *
      * @return string
      */
-    public static function DocumentHeader():string
+    public static function documentHeader():string
     {
         $lRet = <<<EOD
         <!DOCTYPE html>
@@ -44,7 +44,7 @@ class ConfigTemplate
      *
      * @return string
      */
-    public static function DocumentFooter():string
+    public static function documentFooter():string
     {
         $lRet = <<<EOD
             <a id="back-to-top" href="#" class="btn btn-dark btn-lg back-to-top" role="button" style="display:none;">Back to Top</a>
@@ -87,7 +87,7 @@ class ConfigTemplate
      * @param  mixed $aError
      * @return string
      */
-    public static function Error(string $aError):string
+    public static function error(string $aError):string
     {
         $lRet = <<<EOD
         <div class="alert alert-danger" role="alert">
@@ -103,7 +103,7 @@ class ConfigTemplate
      *
      * @return string
      */
-    public static function FormHeader():string
+    public static function formHeader():string
     {
         $lRet = '<form>';
         return $lRet;
@@ -114,7 +114,7 @@ class ConfigTemplate
      *
      * @return string
      */
-    public static function FormFooter():string
+    public static function formFooter():string
     {
         $lRet = '</form>';
         return $lRet;
@@ -141,7 +141,7 @@ class ConfigTemplate
      * @param  mixed $aBreaking
      * @return string
      */
-    public static function TextField(string $aCode, string $aName, string $aDefault, string $aDescription, bool $aBreaking, string $aLink):string
+    public static function textField(string $aCode, string $aName, string $aDefault, string $aDescription, bool $aBreaking, string $aLink):string
     {
         $lMore = self::getMoreLink($aLink);
         
@@ -167,7 +167,7 @@ class ConfigTemplate
      * @param  mixed $aEnum
      * @return string
      */
-    public static function SelectionField(string $aCode, string $aName, string $aDefault, string $aDescription, bool $aBreaking, array $aEnum, string $aLink):string
+    public static function selectionField(string $aCode, string $aName, string $aDefault, string $aDescription, bool $aBreaking, array $aEnum, string $aLink):string
     {
         $lMore = self::getMoreLink($aLink);
         
@@ -206,7 +206,7 @@ class ConfigTemplate
      * @param  mixed $aBreaking
      * @return string
      */
-    public static function NumberField(string $aCode, string $aName, string $aDefault, string $aDescription, string $aMin, string $aMax, string $aStep, $aBreaking, string $aLink):string
+    public static function numberField(string $aCode, string $aName, string $aDefault, string $aDescription, string $aMin, string $aMax, string $aStep, $aBreaking, string $aLink):string
     {
         $lMore = self::getMoreLink($aLink);
         

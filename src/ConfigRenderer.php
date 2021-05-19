@@ -45,11 +45,11 @@ class ConfigRenderer {
             return '';
         }
         
-        $lRet = ConfigTemplate::DocumentHeader();
-        $lRet .= ConfigTemplate::FormHeader();
+        $lRet = ConfigTemplate::documentHeader();
+        $lRet .= ConfigTemplate::formHeader();
         $lRet .= $this->renderForm($this->mConfigIn);
-        $lRet .= ConfigTemplate::FormFooter();
-        $lRet .= ConfigTemplate::DocumentFooter();
+        $lRet .= ConfigTemplate::formFooter();
+        $lRet .= ConfigTemplate::documentFooter();
         
         return $lRet;        
     }
@@ -138,7 +138,7 @@ class ConfigRenderer {
         $lStep = isset($aConfig['step']) ? $aConfig['step'] : '';
         $lLink = isset($aConfig['link']) ? $aConfig['link'] : '';
         
-        return ConfigTemplate::NumberField($aCode, $lName, $lDefault, $lDescription, $lMin, $lMax, $lStep, $lBreaking, $lLink);
+        return ConfigTemplate::numberField($aCode, $lName, $lDefault, $lDescription, $lMin, $lMax, $lStep, $lBreaking, $lLink);
     }
     
     /**
@@ -160,7 +160,7 @@ class ConfigRenderer {
             $lDefault = htmlspecialchars(html_entity_decode(json_encode($lDefault)));
         }
 
-        return ConfigTemplate::TextField($aCode, $lName, $lDefault, $lDescription, $lBreaking, $lLink);
+        return ConfigTemplate::textField($aCode, $lName, $lDefault, $lDescription, $lBreaking, $lLink);
     }
     
     /**
@@ -179,6 +179,6 @@ class ConfigRenderer {
         $lEnum = isset($aConfig['enum']) ? $aConfig['enum'] : '';
         $lLink = isset($aConfig['link']) ? $aConfig['link'] : '';
 
-        return ConfigTemplate::SelectionField($aCode, $lName, $lDefault, $lDescription, $lBreaking, $lEnum, $lLink);
+        return ConfigTemplate::selectionField($aCode, $lName, $lDefault, $lDescription, $lBreaking, $lEnum, $lLink);
     }
 }
