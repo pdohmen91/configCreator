@@ -2,7 +2,7 @@
 
 namespace ConfigGenerator;
 
-class ConfigElements
+class ConfigTemplate
 {
     /**
      * DocumentHeader
@@ -99,6 +99,17 @@ class ConfigElements
     public static function FormFooter():string
     {
         $lRet = '</form>';
+        return $lRet;
+    }
+
+    public static function sectionHeadline(string $aName, int $aLevel):string
+    {
+        $lSectionName = ucfirst($aName);
+        
+        $lRet = <<<EOD
+        <h$aLevel>$lSectionName</h$aLevel>
+        EOD;
+
         return $lRet;
     }
         
