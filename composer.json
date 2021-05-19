@@ -1,6 +1,7 @@
 {
     "name": "peterdohmen/config-creator",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Peter Dohmen",
