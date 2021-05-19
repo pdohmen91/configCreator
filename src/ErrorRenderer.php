@@ -44,9 +44,9 @@ class ErrorRenderer {
             return '';
         }
         
-        $lRet = ConfigElements::DocumentHeader();
-        $lRet .= ConfigElements::Error($this->mMessage);
-        $lRet .= ConfigElements::DocumentFooter();
+        $lRet = ConfigTemplate::DocumentHeader();
+        $lRet .= ConfigTemplate::Error($this->mMessage);
+        $lRet .= ConfigTemplate::DocumentFooter();
         echo $lRet;        
     }
 }

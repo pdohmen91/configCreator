@@ -1,98 +1,118 @@
 {
-    "db.host": {
-        "name": "Database Host",
-        "breaking": true
+    "server": {
+        "database": {
+            "db.host": {
+                "name": "Database Host",
+                "breaking": true
+            },
+            "db.name": {
+                "name": "Database Name",
+                "breaking": true
+            },
+            "db.user": {
+                "name": "Database User",
+                "breaking": true
+            },
+            "db.pass": {
+                "name": "Database Password",
+                "breaking": true
+            },
+            "db.port": {
+                "type": "number",
+                "name": "Database Port",
+                "breaking": true,
+                "default": "3306",
+                "max": "65535"
+            }
+        },
+        "logging": {
+            "log.file": {
+                "name": "System Log File",
+                "description": "The system will write all logs into this file. (Errors & Audit trail)"
+            }
+        },
+        "folders": {
+            "img.coaster": {
+                "name": "Coaster Image Path",
+                "breaking": true,
+                "description": "In this path the system will search for coaster images."
+            }
+        }
     },
-    "db.name": {
-        "name": "Database Name",
-        "breaking": true
+    "system": {
+        "sys.name": {
+            "name": "System Name",
+            "description": "This name will be used and displayed at various places."
+        },
+        "pg.title": {
+            "name": "Page Title",
+            "description": "This will be used as html title."
+        },
+        "sys.timezone": {
+            "name": "System Timezone",
+            "description": "This will be the default timezone used by the system.",
+            "link": "https://www.php.net/manual/en/timezones.php",
+            "default": "Europe/Berlin"
+        },
+        "google.maps.key": {
+            "name": "Google Maps Api Key",
+            "breaking": true,
+            "link": "https://developers.google.com/maps/documentation/javascript/get-api-key"
+        }
     },
-    "db.user": {
-        "name": "Database User",
-        "breaking": true
-    },
-    "db.pass": {
-        "name": "Database Password",
-        "breaking": true
-    },
-    "db.port": {
-        "type": "number",
-        "name": "Database Port",
-        "breaking": true,
-        "default": "3306",
-        "max": "65535"
-    },
-    "parks.comments.max.faved": {
-        "type": "number",
-        "name": "Maximum number of favorite park comments",
-        "description": "How many Park Comments are allowed to be favourised per park",
-        "default": "3",
-        "min": 0
-    },
-    "sys.name": {
-        "name": "System Name",
-        "description": "This name will be used and displayed at various places."
-    },
-    "pg.title": {
-        "name": "Page Title",
-        "description": "This will be used as html title."
-    },
-    "img.coaster": {
-        "name": "Coaster Image Path",
-        "breaking": true,
-        "description": "In this path the system will search for coaster images."
-    },
-    "google.maps.key": {
-        "name": "Google Maps Api Key",
-        "breaking": true,
-        "link": "https://developers.google.com/maps/documentation/javascript/get-api-key"
-    },
-    "log.file": {
-        "name": "System Log File",
-        "description": "The system will write all logs into this file. (Errors & Audit trail)"
-    },
-    "sys.timezone": {
-        "name": "System Timezone",
-        "description": "This will be the default timezone used by the system.",
-        "link": "https://www.php.net/manual/en/timezones.php",
-        "default": "Europe/Berlin"
-    },
-    "fm.continents": {
-        "name": "Available Continents",
-        "type": "array",
-        "default": {"af": "Afrika","as": "Asien","au": "Australien","e": "Europa","na": "Nordamerika","sa": "Südamerika"},
-        "description": "Here you can add all continents which should be available in the system."
-    },
-    "fm.parkCategories": {
-        "name": "Available Park Categories",
-        "type": "array",
-        "default": {"park": "Park", "mobile": "Mobil", "other": "Andere"},
-        "description": "Here you can add all park categories which should be available in the system."
-    },"fm.parkStatus": {
-        "name": "Available Park Status",
-        "type": "array",
-        "default": {"operating": "Geöffnet", "sbno": "SBNO", "inoperative": "Geschlossen", "underconstruction": "Im Bau"}
-    },"fm.coasterTyp": {
-        "name": "Available Coaster Types",
-        "type": "array",
-        "default": {"steel": "Stahl", "wood": "Holz"}
-    },"fm.coasterSupports": {
-        "name": "Available Coaster Support Types",
-        "type": "array",
-        "default": {"steel": "Stahl", "wood": "Holz"}
-    },"fm.coasterDesign": {
-        "name": "Available Coaster Design Types",
-        "type": "array",
-        "default": {"bobsled": "Bobsled Coaster","flying": "Flying Coaster","inverted": "Inverted Coaster","pipeline": "Pipeline Coaster","sitdown": "Sitdown Coaster","standup": "Standup Coaster","suspended": "Suspended Coaster","wing": "Wing Coaster"}
-    },"fm.coasterStatus": {
-        "name": "Available Coaster Status",
-        "type": "array",
-        "default": {"operating": "In Betrieb","sbno": "SBNO","underconstruction": "Im Bau","inoperative": "Geschlossen","instorage": "Eingelagert"}
-    },
-    "fm.partnerStatus": {
-        "name": "Available Partner Status",
-        "type": "array",
-        "default": {"none": "Kein Partner"},
-        "description": "Here you can add all partner status which should be available in the system."
+    "pcp": {
+        "continents": {
+            "fm.continents": {
+                "name": "Available Continents",
+                "type": "array",
+                "default": {"af": "Afrika","as": "Asien","au": "Australien","e": "Europa","na": "Nordamerika","sa": "Südamerika"},
+                "description": "Here you can add all continents which should be available in the system."
+            }
+        },
+        "parks": {
+            "parks.comments.max.faved": {
+                "type": "number",
+                "name": "Maximum number of favorite park comments",
+                "description": "How many Park Comments are allowed to be favourised per park",
+                "default": "3",
+                "min": 0
+            },"fm.parkCategories": {
+                "name": "Available Park Categories",
+                "type": "array",
+                "default": {"park": "Park", "mobile": "Mobil", "other": "Andere"},
+                "description": "Here you can add all park categories which should be available in the system."
+            },"fm.parkStatus": {
+                "name": "Available Park Status",
+                "type": "array",
+                "default": {"operating": "Geöffnet", "sbno": "SBNO", "inoperative": "Geschlossen", "underconstruction": "Im Bau"}
+            },"fm.partnerStatus": {
+                "name": "Available Partner Status",
+                "type": "array",
+                "default": {"none": "Kein Partner"},
+                "description": "Here you can add all partner status which should be available in the system."
+            }
+        },
+        "coaster": {
+            "fm.coasterTyp": {
+                "name": "Available Coaster Types",
+                "type": "array",
+                "default": {"steel": "Stahl", "wood": "Holz"}
+            },
+            "fm.coasterSupports": {
+                "name": "Available Coaster Support Types",
+                "type": "array",
+                "default": {"steel": "Stahl", "wood": "Holz"}
+            },
+            "fm.coasterDesign": {
+                "name": "Available Coaster Design Types",
+                "type": "array",
+                "default": {"bobsled": "Bobsled Coaster","flying": "Flying Coaster","inverted": "Inverted Coaster","pipeline": "Pipeline Coaster","sitdown": "Sitdown Coaster","standup": "Standup Coaster","suspended": "Suspended Coaster","wing": "Wing Coaster"}
+            },
+            "fm.coasterStatus": {
+                "name": "Available Coaster Status",
+                "type": "array",
+                "default": {"operating": "In Betrieb","sbno": "SBNO","underconstruction": "Im Bau","inoperative": "Geschlossen","instorage": "Eingelagert"}
+            }
+        }
     }
 }
