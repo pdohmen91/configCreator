@@ -4,7 +4,7 @@ namespace ConfigGenerator;
 
 /**
  * ConfigTemplate
- * 
+ *
  * @author Peter Dohmen peterdohmen.de
  * @package ConfigCreator
  */
@@ -147,7 +147,14 @@ class ConfigTemplate
      * @param  mixed $aBreaking
      * @return string
      */
-    public static function textField(string $aCode, string $aName, string $aDefault, string $aDescription, bool $aBreaking, string $aLink):string
+    public static function textField(
+        string $aCode,
+        string $aName,
+        string $aDefault,
+        string $aDescription,
+        bool $aBreaking,
+        string $aLink
+    ):string
     {
         $lMore = self::getMoreLink($aLink);
         
@@ -173,8 +180,15 @@ class ConfigTemplate
      * @param  mixed $aEnum
      * @return string
      */
-    public static function selectionField(string $aCode, string $aName, string $aDefault, string $aDescription, bool $aBreaking, array $aEnum, string $aLink):string
-    {
+    public static function selectionField(
+        string $aCode,
+        string $aName,
+        string $aDefault,
+        string $aDescription,
+        bool $aBreaking,
+        array $aEnum,
+        string $aLink
+    ):string {
         $lMore = self::getMoreLink($aLink);
         
         $lRet = <<<EOD
@@ -222,8 +236,7 @@ class ConfigTemplate
         string $aStep,
         $aBreaking,
         string $aLink
-    ):string
-    {
+    ):string {
         $lMore = self::getMoreLink($aLink);
         
         $lRet = <<<EOD
