@@ -1,17 +1,23 @@
 <?php
-
+/**
+ * This file contains the Template Class for the Configuration Form
+ *
+ * @package    ConfigGenerator
+ * @license    MIT
+ * @author     Peter Dohmen <pdohmen91@gmail.com>
+ */
 namespace ConfigGenerator;
 
 /**
  * ConfigTemplate
  *
- * @author Peter Dohmen peterdohmen.de
+ * @author Peter Dohmen <pdohmen91@gmail.com>
  * @package ConfigCreator
  */
 class ConfigTemplate
 {
     /**
-     * DocumentHeader
+     * This method renders the beginning of the document.
      *
      * @return string
      */
@@ -46,7 +52,7 @@ class ConfigTemplate
     }
     
     /**
-     * DocumentFooter
+     * This method renders the end of the document.
      *
      * @return string
      */
@@ -88,7 +94,7 @@ class ConfigTemplate
     }
     
     /**
-     * Error
+     * This method renders errors which might appear inside the form.
      *
      * @param  mixed $aError
      * @return string
@@ -105,7 +111,7 @@ class ConfigTemplate
     }
     
     /**
-     * FormHeader
+     * This method renders the beginning of the config form.
      *
      * @return string
      */
@@ -116,7 +122,7 @@ class ConfigTemplate
     }
     
     /**
-     * FormFooter
+     * This method renders the end of the config form.
      *
      * @return string
      */
@@ -125,20 +131,41 @@ class ConfigTemplate
         $lRet = '</form>';
         return $lRet;
     }
-
+    
+    /**
+     * This method renders the headline of a new section.
+     * Sectons can be created by nesting configs deeper in the given json.
+     * Each section will be displayed with a headline and the given text. 
+     * The headline will be a html h1 to h6. Levels higher than 6 will be rendered as h6.
+     * @example
+     * <code>
+     * {
+     * "section1": {
+     *   "nested-section": {
+     *       "config": { ... }
+     *     }
+     *   }
+     * }
+     * </code>
+     *
+     * @param  mixed $aName
+     * @param  mixed $aLevel
+     * @return string
+     */
     public static function sectionHeadline(string $aName, int $aLevel):string
     {
         $lSectionName = ucfirst($aName);
+        $lLevel = ($aLevel >= 6) ? 6 : $aLevel;
         
         $lRet = <<<EOD
-        <h$aLevel>$lSectionName</h$aLevel>
+        <h$lLevel>$lSectionName</h$lLevel>
         EOD;
 
         return $lRet;
     }
         
     /**
-     * TextField
+     * This method renders a complete form group element for text configurations.
      *
      * @param  mixed $aCode
      * @param  mixed $aName
@@ -170,7 +197,7 @@ class ConfigTemplate
     }
     
     /**
-     * SelectionField
+     * This method renders a complete form group element for selection fields
      *
      * @param  mixed $aCode
      * @param  mixed $aName
@@ -214,7 +241,7 @@ class ConfigTemplate
     }
     
     /**
-     * NumberField
+     * This method renders a complete form group element for number configurations
      *
      * @param  mixed $aCode
      * @param  mixed $aName
@@ -252,7 +279,7 @@ class ConfigTemplate
     }
     
     /**
-     * BreakingInfo
+     * This method defines how an info icon will look like which tells the user that the config might break the system when it is changed.
      *
      * @param  mixed $aBreaking
      * @return string
@@ -265,7 +292,13 @@ class ConfigTemplate
 
         return '';
     }
-
+    
+    /**
+     * This method defines how a link with additional information for the current config will look like.
+     *
+     * @param  mixed $aLink
+     * @return string
+     */
     public static function getMoreLink(string $aLink):string
     {
         if (!empty($aLink)) {
