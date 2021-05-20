@@ -7,13 +7,12 @@ use ConfigGenerator\ErrorRenderer;
 
 /**
  * ConfigGenerator
- * 
+ *
  * @package ConfigCreator
  * @author Peter Dohmen peterdohmen.de
  */
 class ConfigGenerator
 {
-
     private string $_configIn;
 
     /**
@@ -28,6 +27,7 @@ class ConfigGenerator
         if (empty($this->_configIn)) {
             $lConfigRenderer = new ErrorRenderer("configIn.json is empty, was not found or could not be opened");
         }
+
         //Parse Config Input
         $lConfigInputArray = $this->parseConfigurationInput($this->_configIn);
         asort($lConfigInputArray);
@@ -42,7 +42,7 @@ class ConfigGenerator
     }
     
     /**
-     * ParseConfigurationInput parses a given json structure into an associative array, returns empty array if structure was not valid. 
+     * ParseConfigurationInput parses a given json structure into an associative array, returns empty array if structure was not valid.
      *
      * @param  mixed $aInput
      * @return array
@@ -75,7 +75,7 @@ class ConfigGenerator
 
     /**
      * Get the value of _configIn
-     */ 
+     */
     public function get_configIn()
     {
         return $this->_configIn;
@@ -85,7 +85,7 @@ class ConfigGenerator
      * Set the value of _configIn
      *
      * @return  self
-     */ 
+     */
     public function set_configIn($_configIn)
     {
         $this->_configIn = $_configIn;
