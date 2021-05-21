@@ -18,7 +18,7 @@ final class generatorTest extends TestCase
     {
         $lMain = new ConfigGenerator\ConfigGenerator();
         $this->assertIsString($lMain->run());
-        $this->assertEquals(mb_detect_encoding($lMain->get_configIn(), 'UTF-8', TRUE), 'UTF-8');
+        $this->assertEquals(mb_detect_encoding($lMain->getConfigIn(), 'UTF-8', TRUE), 'UTF-8');
     }
     
     /**
