@@ -36,7 +36,7 @@ class ConfigElement
     /**
      * Get the value of _code
      */ 
-    public function get_code()
+    public function getCode()
     {
         return $this->_code;
     }
@@ -46,7 +46,7 @@ class ConfigElement
      *
      * @return  self
      */ 
-    private function _set_code($_code)
+    private function _setCode($_code)
     {
         $this->_code = $_code;
 
@@ -56,7 +56,7 @@ class ConfigElement
     /**
      * Get the value of _name
      */ 
-    public function get_name()
+    public function getName()
     {
         return $this->_name;
     }
@@ -66,7 +66,7 @@ class ConfigElement
      *
      * @return  self
      */ 
-    public function set_name($_name)
+    public function setName($_name)
     {
         $this->_name = $_name;
 
@@ -76,7 +76,7 @@ class ConfigElement
     /**
      * Get the value of _type
      */ 
-    public function get_type()
+    public function getType()
     {
         return $this->_type;
     }
@@ -86,7 +86,7 @@ class ConfigElement
      *
      * @return  self
      */ 
-    public function set_type($_type)
+    public function setType($_type)
     {
         $this->_type = $_type;
 
@@ -96,7 +96,7 @@ class ConfigElement
     /**
      * Get the value of _default
      */ 
-    public function get_default()
+    public function getDefault()
     {
         return $this->_default;
     }
@@ -106,7 +106,7 @@ class ConfigElement
      *
      * @return  self
      */ 
-    public function set_default($_default)
+    public function setDefault($_default)
     {
         $this->_default = $_default;
 
@@ -116,7 +116,7 @@ class ConfigElement
     /**
      * Get the value of _description
      */ 
-    public function get_description()
+    public function getDescription()
     {
         return $this->_description;
     }
@@ -126,7 +126,7 @@ class ConfigElement
      *
      * @return  self
      */ 
-    public function set_description($_description)
+    public function setDescription($_description)
     {
         $this->_description = $_description;
 
@@ -136,7 +136,7 @@ class ConfigElement
     /**
      * Get the value of _max
      */ 
-    public function get_max()
+    public function getMax()
     {
         return $this->_max;
     }
@@ -146,7 +146,7 @@ class ConfigElement
      *
      * @return  self
      */ 
-    public function set_max($_max)
+    public function setMax($_max)
     {
         $this->_max = $_max;
 
