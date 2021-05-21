@@ -13,6 +13,9 @@ use ConfigGenerator\ErrorRenderer;
  */
 class ConfigGenerator
 {
+    /**
+     * Holds the incoming config
+     */
     private string $_configIn;
 
     /**
@@ -23,7 +26,7 @@ class ConfigGenerator
     public function run(): string
     {
         //Read Config Input File
-        $this->set_configIn($this->_readFile('configIn.json'));
+        $this->setConfigIn($this->_readFile('configIn.json'));
         if (empty($this->_configIn)) {
             $lConfigRenderer = new ErrorRenderer("configIn.json is empty, was not found or could not be opened");
         }
@@ -42,7 +45,8 @@ class ConfigGenerator
     }
     
     /**
-     * ParseConfigurationInput parses a given json structure into an associative array, returns empty array if structure was not valid.
+     * ParseConfigurationInput parses a given json structure into an associative array.
+     * Returns empty array if structure was not valid.
      *
      * @param  mixed $aInput
      * @return array
@@ -62,7 +66,7 @@ class ConfigGenerator
      * ReadFile reads a file from a given path and gives the content as utf-8 encoded string
      *
      * @param  mixed $aFilePath
-     * @return string encoded with utf-8
+     * @return string
      */
     private function _readFile(string $aFilePath): string
     {
@@ -74,9 +78,11 @@ class ConfigGenerator
     }
 
     /**
-     * Get the value of _configIn
+     * getConfigIn
+     *
+     * @return string
      */
-    public function get_configIn()
+    public function getConfigIn():string
     {
         return $this->_configIn;
     }
@@ -86,7 +92,7 @@ class ConfigGenerator
      *
      * @return  self
      */
-    public function set_configIn($_configIn)
+    public function setConfigIn($_configIn)
     {
         $this->_configIn = $_configIn;
 
