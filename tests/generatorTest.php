@@ -9,6 +9,20 @@ use PHPUnit\Framework\TestCase;
  */
 final class generatorTest extends TestCase
 {
+    
+    public $configInExample = <<<EOD
+    {
+        "server": {
+            "database": {
+                "db.host": {
+                    "name": "Database Host",
+                    "breaking": true
+                }
+            }
+        }
+    }
+    EOD;
+    
     /**
      * TestCanRun
      *
@@ -28,19 +42,6 @@ final class generatorTest extends TestCase
      */
     public function testJsonParser(): void
     {
-        $lValidJson = <<<EOD
-        {
-            "server": {
-                "database": {
-                    "db.host": {
-                        "name": "Database Host",
-                        "breaking": true
-                    }
-                }
-            }
-        }
-        EOD;
-
         $lInValidJson = <<<EOD
         {
             "server": {
@@ -55,7 +56,20 @@ final class generatorTest extends TestCase
         EOD;
 
         $lMain = new ConfigGenerator\ConfigGenerator();
-        $this->assertIsArray($lMain->parseConfigurationInput($lValidJson));
+        $this->assertIsArray($lMain->parseConfigurationInput($this->configInExample));
         $this->assertEmpty($lMain->parseConfigurationInput($lInValidJson));
+    }
+    
+    /**
+     * testGetSetConfigIn
+     *
+     * @return void
+     */
+    public function testGetSetConfigIn(): void
+    {
+        $lMain = new ConfigGenerator\ConfigGenerator();
+        $lMain->setConfigIn($this->configInExample);
+
+        $this->assertEquals($lMain->getConfigIn(), $this->configInExample);
     }
 }
