@@ -2,17 +2,19 @@
 /**
  * This file contains the Template Class for the Configuration Form
  *
- * @package    ConfigGenerator
- * @license    MIT
- * @author     Peter Dohmen <pdohmen91@gmail.com>
+ * Php version 7.4
+ * 
+ * @package ConfigGenerator
+ * @author Peter Dohmen <pdohmen91@gmail.com>
+ * @category Template
+ * @license https://opensource.org/licenses/gpl-license.php GNU Public License
  */
 namespace ConfigGenerator;
 
 /**
  * ConfigTemplate
- *
- * @author Peter Dohmen <pdohmen91@gmail.com>
  * @package ConfigCreator
+ * @author Peter Dohmen <pdohmen91@gmail.com>
  */
 class ConfigTemplate
 {

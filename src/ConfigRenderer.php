@@ -6,7 +6,7 @@ use ConfigGenerator\ConfigElements;
 
 /**
  * ConfigRenderer
- * 
+ *
  * @package ConfigCreator
  * @author Peter Dohmen peterdohmen.de
  */
@@ -57,24 +57,32 @@ class ConfigRenderer
         
         return $lRet;
     }
-
+    
+    /**
+     * _renderForm
+     *
+     * @param  mixed $aConfig
+     * @param  mixed $aLevel
+     * @return string
+     */
     private function _renderForm(array $aConfig, int $aLevel = 2):string
     {
         $lRet = '';
-
-        $aLevel++;
+        ++$aLevel;
 
         foreach ($aConfig as $lCode => $lConfig) {
+            if ($aLevel > 6) {
+                $lRet .= $this->_renderError('Nesting Limit reached');
+                continue;
+            }
+            
             if (isset($lConfig['name'])) {
                 $lRet .= $this->_renderConfigItem($lCode, $lConfig);
-            } else {
-                $lRet .= $this->_renderSection($lCode, $aLevel);
-                if ($aLevel < 6) {
-                    $lRet .= $this->_renderForm($lConfig, $aLevel);
-                } else {
-                    $lRet .= $this->_renderError('Nesting Limit reached');
-                }
+                continue;
             }
+            
+            $lRet .= $this->_renderSection($lCode, $aLevel);
+            $lRet .= $this->_renderForm($lConfig, $aLevel);
         }
 
         return $lRet;

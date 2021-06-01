@@ -10,10 +10,10 @@ namespace ConfigGenerator\Model;
  */
 class ConfigElement
 {
-    private $_code;
-    private $_name;
-    private $_type;
-    private $_default;
+    private $_Code;
+    private $_Name;
+    private $_Type;
+    private $_Default;
     private $_description;
     private $_max;
     private $_min;
@@ -29,86 +29,86 @@ class ConfigElement
      */
     public function __construct(string $aCode, string $aName):void
     {
-        $this->_set_code($aCode);
+        $this->_SetCode($aCode);
         $this->set_name($aName);
     }
 
     /**
-     * Get the value of _code
+     * Get the value of _Code
      */ 
     public function getCode()
     {
-        return $this->_code;
+        return $this->_Code;
     }
 
     /**
-     * Set the value of _code
+     * Set the value of Code
      *
      * @return  self
      */ 
-    private function _setCode($_code)
+    private function _SetCode($code)
     {
-        $this->_code = $_code;
+        $this->_Code = $code;
 
         return $this;
     }
 
     /**
-     * Get the value of _name
+     * Get the value of Name
      */ 
     public function getName()
     {
-        return $this->_name;
+        return $this->_Name;
     }
 
     /**
-     * Set the value of _name
+     * Set the value of Name
      *
      * @return  self
      */ 
-    public function setName($_name)
+    public function setName($name)
     {
-        $this->_name = $_name;
+        $this->_Name = $name;
 
         return $this;
     }
 
     /**
-     * Get the value of _type
+     * Get the value of Type
      */ 
     public function getType()
     {
-        return $this->_type;
+        return $this->_Type;
     }
 
     /**
-     * Set the value of _type
+     * Set the value of Type
      *
      * @return  self
      */ 
-    public function setType($_type)
+    public function setType($type)
     {
-        $this->_type = $_type;
+        $this->_Type = $type;
 
         return $this;
     }
 
     /**
-     * Get the value of _default
+     * Get the value of Default
      */ 
     public function getDefault()
     {
-        return $this->_default;
+        return $this->_Default;
     }
 
     /**
-     * Set the value of _default
-     *
+     * Set the value of Default
+     * 
      * @return  self
      */ 
-    public function setDefault($_default)
+    public function setDefault($default)
     {
-        $this->_default = $_default;
+        $this->_Default = $default;
 
         return $this;
     }
@@ -126,9 +126,9 @@ class ConfigElement
      *
      * @return  self
      */ 
-    public function setDescription($_description)
+    public function setDescription($description)
     {
-        $this->_description = $_description;
+        $this->_description = $description;
 
         return $this;
     }
@@ -146,9 +146,9 @@ class ConfigElement
      *
      * @return  self
      */ 
-    public function setMax($_max)
+    public function setMax($max)
     {
-        $this->_max = $_max;
+        $this->_max = $max;
 
         return $this;
     }
